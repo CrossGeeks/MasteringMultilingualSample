@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MultilingualXFSample.Views.ChangeLanguagePage"
+             xmlns:helpers="clr-namespace:MultilingualXFSample.Helpers"
+             xmlns:controls="clr-namespace:MultilingualXFSample.Controls">
+    <ContentPage.Content>
+         <StackLayout Padding="20" VerticalOptions="CenterAndExpand">
+             <Label  Text="{helpers:Translate SelectLanguage, StringFormat='{0}:'}" />
+
+            <controls:LocalizedDatePicker PositiveActionText="{helpers:Translate Update}" NegativeActionText="{helpers:Translate Cancel}"/>
+
+            <controls:LocalizedTimePicker PositiveActionText="{helpers:Translate Update}" NegativeActionText="{helpers:Translate Cancel}"/>
+
+               <Picker x:Name="picker"
+                       ItemsSource="{Binding Languages}"
+                       ItemDisplayBinding="{Binding Name}"
+                       SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"/>
+
+               <Button Text="{helpers:Translate Save}"
+                       Command="{Binding ChangeLangugeCommand, Mode=OneTime}"
+                       BackgroundColor="Black"
+                       TextColor="White"/>
+          </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
